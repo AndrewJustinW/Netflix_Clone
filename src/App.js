@@ -1,5 +1,6 @@
-import Row from "./components/Row"
+import Row from "./components/Row/Row"
 import requests from "./data/requests"
+import "./app.scss"
 
 function App() {
   return (
