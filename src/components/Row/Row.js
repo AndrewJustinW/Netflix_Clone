@@ -12,7 +12,7 @@ const Row = ({ title, fetchURL }) => {
     useEffect(() => {
         const fetchData = async () => {
 
-            const req = await axios.get(fetchURL);
+            const req = await axios.get(fetchURL);  // fetchURL is pulled in as a prop from app.js. App.js is using api endpoints stored in requests.js
             setMovies(req.data.results)
         }
 
