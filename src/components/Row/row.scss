@@ -3,12 +3,18 @@
     color: white;
     margin-top: 20px;
 
+
+
     .row-container {
         display: flex;
         overflow-y: hidden;
         overflow-x: scroll;
         box-sizing: border-box;
         padding: 15px;
+        background-color: rgba(59, 59, 59, 0.075);
+        height: 100%;
+        padding: 1em;
+
 
         &::-webkit-scrollbar {
             display: none;
