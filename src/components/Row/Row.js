@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from "../../data/axios"  // This is using axios.create we've created instead of axios from nodemodules. (This includes the baseURL when making requests)
 
-const Row = ({ title, fetchURL }) => {
+const Row = ({ title, fetchURL, isLargeRow }) => {
 
     const [movies, setMovies] = useState([]);
 
@@ -31,8 +31,8 @@ const Row = ({ title, fetchURL }) => {
                 {movies.map((movie) => (
                     <img
                         key={movie.id}
-                        className="row-item-poster"
-                        src={base_image_url + movie.poster_path}
+                        className={`row-item-poster ${isLargeRow && "large-poster"}`}
+                        src={base_image_url + `${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
                         alt={movie.name}
                     />
 
