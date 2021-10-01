@@ -21,6 +21,7 @@
         }
 
         .row-item-poster {
+            border: solid white 5px;
             width: 100%;
             object-fit: cover;
             max-height: 120px; // This is what is limiting the width from behing huge. ["You're allowed to only be this tall. Now make the width as big as possible while keeping this height"]

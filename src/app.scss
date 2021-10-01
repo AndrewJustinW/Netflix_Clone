@@ -3,10 +3,17 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.App {
-    background-color: #111;
+:root {
+    --main-color: #0b0b0b;
 }
+
+
+.App {
+    background-color: var(--main-color);
+}
+
 
 
 @import "./components/Row/row.scss";
 @import "./components/Banner/banner.scss";
+@import "./components/navbar/navbar.scss"
