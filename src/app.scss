@@ -1,7 +1,12 @@
 * {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.App {
+    background-color: #111;
 }
 
 
-
 @import "./components/Row/row.scss";
+@import "./components/Banner/banner.scss";
