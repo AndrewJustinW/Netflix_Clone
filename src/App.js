@@ -1,7 +1,11 @@
-import Row from "./components/Row/Row"
+// Object of API ENDPOINTS
 import requests from "./data/requests"
+// Styling
 import "./app.scss"
+// Components
+import Row from "./components/Row/Row"
 import Banner from "./components/Banner/Banner";
+
 
 function App() {
   return (

@@ -2,9 +2,14 @@ import React from 'react'
 
 const Banner = () => {
     return (
-        <div className="banner">
-            Banner
-        </div>
+        <header className="banner">
+
+            {/* title */}
+            {/* div with 2 buttons */}
+            {/* description of featured movie */}
+
+
+        </header>
     )
 }
 
