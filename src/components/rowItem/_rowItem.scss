@@ -1,0 +1,109 @@
+.row-item {
+    position: relative;
+    width: 17.7em;
+    height: 10.18em;
+    background-color: var(--main-color);
+    color: black;
+    margin-right: 0.3125em;
+    overflow: hidden;
+    color: white;
+
+    .image-container {
+        position: relative;
+
+        img {
+            width: 100%;
+            // height: 100%;
+            object-fit: cover;
+        }
+
+        .image-title {
+            position: absolute;
+            bottom: 1em;
+            left: 0.3em;
+            padding: 0 0.5em;
+            background-color: rgba(0, 0, 0, 0.418);
+        }
+
+
+    }
+
+    .item-info {
+
+        padding: 0 1em;
+
+        .icons-container {
+            display: flex;
+            margin-top: .8rem;
+            margin-bottom: 1rem;
+
+            .icons-left {
+                width: 70%;
+                display: flex;
+            }
+
+            .icons-right {
+                display: flex;
+                justify-content: flex-end;
+                width: 30%;
+            }
+
+            .item-icon {
+                border: 2px solid rgb(119, 119, 119);
+                border-radius: 50%;
+                padding: .4rem;
+                margin: 0 0.2rem;
+                cursor: pointer;
+            }
+        }
+
+        .item-info-details {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            span {
+                font-size: 0.9rem;
+                margin-right: 1rem;
+
+                &.item-average {
+                    color: rgb(76, 248, 76);
+                }
+
+                &.rating {
+                    border: solid 1px rgba(255, 255, 255, 0.479);
+                }
+
+                &.resolution {
+                    border: solid 1px rgba(255, 255, 255, 0.479);
+                    font-size: 0.7rem;
+                    padding: 0 0.5em;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .genres {
+            display: flex;
+            align-items: center;
+
+            span {
+                margin-right: 1em;
+                font-size: 1rem;
+                font-weight: 500;
+            }
+        }
+    }
+
+    &:hover {
+        width: 24.3125em;
+        height: 22.75em;
+        -webkit-box-shadow: 0px 0px 12px 0px rgba(107, 107, 107, 0.1);
+        box-shadow: 0px 0px 12px 0px rgba(94, 94, 94, 0.1);
+        border-radius: 5px;
+
+        img {
+            height: 60%;
+        }
+    }
+}

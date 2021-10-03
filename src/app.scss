@@ -1,19 +1,17 @@
 * {
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+
 }
 
 :root {
-    --main-color: #0b0b0b;
+    --main-color: #141414;
 }
 
 
-.App {
-    background-color: var(--main-color);
-}
-
-
-
-@import "./components/Row/row.scss";
-@import "./components/Banner/banner.scss";
-@import "./components/navbar/navbar.scss"
+@import "./pages/home/home.scss";
+@import "./components/navbar/_navbar.scss";
+@import "./components/featured/featured";
+@import "./components/row/row";
+@import "./components/rowItem/rowItem";
