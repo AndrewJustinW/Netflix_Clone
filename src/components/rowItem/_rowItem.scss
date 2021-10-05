@@ -1,7 +1,7 @@
 .row-item {
     position: relative;
-    width: 17.7em;
-    height: 10.18em;
+    width: 20.7em;
+    height: 11em;
     background-color: var(--main-color);
     color: black;
     margin-right: 0.3125em;
@@ -19,8 +19,9 @@
 
         .image-title {
             position: absolute;
-            bottom: 1em;
-            left: 0.3em;
+            width: 95%;
+            bottom: 1.5em;
+            left: 0.2em;
             padding: 0 0.5em;
             background-color: rgba(0, 0, 0, 0.418);
         }

@@ -30,14 +30,14 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
         // If we're at the beginning of the list don't allow for the slider to move.
         if (direction === "left" && slideNumber > 0 && animationFinished) {
             setSlideNumber(slideNumber - 1)
-            rowRef.current.style.transform = `translateX(${288.2 + distance}px)`  //288.2px = 18.0125 em (listItem's width + margin-right = 18.0125em)  
+            rowRef.current.style.transform = `translateX(${336.2 + distance}px)`  //336.2px = 21.0125em (listItem's width + margin-right = 21.0125em)
         }
 
         // If we're at the ending of the list don't allow for the slider to move.
         // slideNumber > 2 accounts for there only being 8 visible and 2 left off screen
         if (direction === "right" && slideNumber < (movies.length - 6) && animationFinished) {
             setSlideNumber(slideNumber + 1)
-            rowRef.current.style.transform = `translateX(${-288.2 + distance}px)`  //288.2px = 18.0125 em (listItem's width + margin-right = 18.0125em)  
+            rowRef.current.style.transform = `translateX(${-336.2 + distance}px)`  //336.2px = 21.0125em (listItem's width + margin-right = 21.0125em)  
 
         }
         // console.log(distance)
