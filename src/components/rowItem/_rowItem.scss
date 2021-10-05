@@ -21,8 +21,8 @@
             position: absolute;
             width: 95%;
             bottom: 1.5em;
-            left: 0.2em;
-            padding: 0 0.5em;
+            left: 0;
+            padding: 0 1em;
             background-color: rgba(0, 0, 0, 0.418);
         }
 
@@ -73,6 +73,7 @@
 
                 &.rating {
                     border: solid 1px rgba(255, 255, 255, 0.479);
+                    padding: 0 0.4em;
                 }
 
                 &.resolution {
