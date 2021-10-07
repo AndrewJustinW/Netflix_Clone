@@ -12,13 +12,14 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
     const [slideNumber, setSlideNumber] = useState(0)
 
     // Check to see if one animation is finished before another begins.
-    const [animationFinished, setAnimationFinished] = useState(true)
+    // const [animationFinished, setAnimationFinished] = useState(true)
+
+
 
     const rowRef = useRef()
 
-    //Important for animation logic: Container contains 10 list items. 2 of which are off screen.
     const handleClick = (direction) => {
-        setAnimationFinished(false)
+        // setAnimationFinished(false)
 
         // The Element.getBoundingClientRect() method returns a DOMRect object providing information
         //   about the size of an element and its position relative to the viewport.
@@ -28,25 +29,22 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
         // console.log(rowRef.current.getBoundingClientRect().width)
 
         // If we're at the beginning of the list don't allow for the slider to move.
-        if (direction === "left" && slideNumber > 0 && animationFinished) {
+        if (direction === "left" && slideNumber > 0) {
             setSlideNumber(slideNumber - 1)
             rowRef.current.style.transform = `translateX(${301 + distance}px)`  //301px  = 18.8125em (listItem's width + margin-right = 18.8125em)
+
         }
 
         // If we're at the ending of the list don't allow for the slider to move.
         // slideNumber > 2 accounts for there only being 8 visible and 2 left off screen
-        if (direction === "right" && slideNumber < (movies.length - 6) && animationFinished) {
+        if (direction === "right" && slideNumber < (movies.length - 6)) {
             setSlideNumber(slideNumber + 1)
             rowRef.current.style.transform = `translateX(${-301 + distance}px)`  //301px  = 18.8125em (listItem's width + margin-right = 18.8125em)
 
         }
-        // console.log(distance)
 
-        // Created a timeout to prevent 1 animation happening in the middle of a nother.
-        // For Example: animation 1 is 50% of the way done, another one begins at this exact time. That causes problems with positioning.
-        setTimeout(() => {
-            setAnimationFinished(true)
-        }, 1650);
+
+
 
     }
 
@@ -79,9 +77,7 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
 
                 <div className="container" ref={rowRef}>
 
-
                     {movies.map((movie) => (
-
 
                         <RowItem movie={movie} isLargeRow={isLargeRow} key={movie.id} fetchURL={fetchURL} />
 
@@ -93,7 +89,7 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
                 <ArrowForwardIosOutlined
                     className="slider-arrow slider-right"
                     onClick={() => handleClick("right")}
-                    style={{ display: slideNumber > (movies.length - 6) && "none" }}
+                    style={{ display: slideNumber >= (movies.length - 6) && "none" }}
                 />
 
             </div>
