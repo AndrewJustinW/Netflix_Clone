@@ -15,7 +15,7 @@ const Navbar = () => {
 
     return (
         // If isScrolled state is true then add scrolled class. If not then just use default navbar class/css
-        <div className={isScrolled ? "navbar scrolled" : "navbar"}>
+        <nav className={isScrolled ? "navbar scrolled" : "navbar"}>
 
             <div className="nav-container">
 
@@ -57,7 +57,7 @@ const Navbar = () => {
 
             </div>
 
-        </div>
+        </nav>
     )
 }
 

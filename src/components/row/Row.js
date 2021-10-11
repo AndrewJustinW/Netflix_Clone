@@ -8,44 +8,29 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
     // Movies pulled from API for each row
     const [movies, setMovies] = useState([]);
 
-    // This useState is mainly to check if we're at the first or last item in the container.
+    // Theck if we're at the first or last item in the container.
     const [slideNumber, setSlideNumber] = useState(0)
-
-    // Check to see if one animation is finished before another begins.
-    // const [animationFinished, setAnimationFinished] = useState(true)
-
-
 
     const rowRef = useRef()
 
     const handleClick = (direction) => {
-        // setAnimationFinished(false)
 
-        // The Element.getBoundingClientRect() method returns a DOMRect object providing information
-        //   about the size of an element and its position relative to the viewport.
+        // The Element.getBoundingClientRect() method returns a DOMRect object providing information about the size of an element and its position relative to the viewport.
 
         // Storing the x axis position of the container element and subtracting the width (50px) of the arrows (in pixels)
         let distance = rowRef.current.getBoundingClientRect().x - 50
         // console.log(rowRef.current.getBoundingClientRect().width)
 
-        // If we're at the beginning of the list don't allow for the slider to move.
+        //CONTROLS ACTUAL MOVEMENT
         if (direction === "left" && slideNumber > 0) {
             setSlideNumber(slideNumber - 1)
             rowRef.current.style.transform = `translateX(${301 + distance}px)`  //301px  = 18.8125em (listItem's width + margin-right = 18.8125em)
-
         }
 
-        // If we're at the ending of the list don't allow for the slider to move.
-        // slideNumber > 2 accounts for there only being 8 visible and 2 left off screen
         if (direction === "right" && slideNumber < (movies.length - 6)) {
             setSlideNumber(slideNumber + 1)
             rowRef.current.style.transform = `translateX(${-301 + distance}px)`  //301px  = 18.8125em (listItem's width + margin-right = 18.8125em)
-
         }
-
-
-
-
     }
 
 
@@ -58,12 +43,11 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
             return req
         }
 
-        // console.log(movies)
         fetchData()
     }, [fetchURL, movies])
 
     return (
-        <div className="row">
+        <section className="row">
 
             <h2 className="row-title">{title}</h2>
 
@@ -79,7 +63,7 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
 
                     {movies.map((movie) => (
 
-                        <RowItem movie={movie} isLargeRow={isLargeRow} key={movie.id} fetchURL={fetchURL} />
+                        <RowItem movie={movie} isLargeRow={isLargeRow} key={movie.id} fetchURL={fetchURL} index={movies.indexOf(movie)} />
 
                     ))}
 
@@ -94,7 +78,7 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
 
             </div>
 
-        </div>
+        </section>
     )
 }
 

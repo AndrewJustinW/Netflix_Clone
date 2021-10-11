@@ -22,15 +22,14 @@ const Featured = () => {
         fetchData()
     }, [])
 
-    const truncate = (str, n) => {
-        return str?.length.n ? str.substr(0, n - 1) + "..." : str;
-    }
+    const shortOverview = movie.overview ? movie.overview.substring(0, 130) + "..." : '';
 
-    console.log(movie)
+
+    // console.log(movie?.overview.length)
 
     return (
 
-        <div className="featured">
+        <header className="featured">
 
             <div className="featured-fade-bottom"></div>
 
@@ -49,7 +48,7 @@ const Featured = () => {
 
                 <h2 className="featured-desc">
 
-                    {truncate(movie?.overview, 100)}
+                    {shortOverview}
 
                 </h2>
 
@@ -75,7 +74,7 @@ const Featured = () => {
             </div>
 
 
-        </div>
+        </header>
     )
 
 }

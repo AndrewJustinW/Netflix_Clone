@@ -3,15 +3,16 @@ import axios from "../../data/axios"
 import { Add, KeyboardArrowDown, PlayArrow, ThumbDownAltOutlined, ThumbUpAltOutlined } from '@mui/icons-material'
 
 
-const RowItem = ({ movie, isLargeRow }) => {
-
+const RowItem = ({ movie, isLargeRow, index }) => {
+    //API GATHERED INFO
     const [rating, setRating] = useState('')
     const [genres, setGenres] = useState([])
     const [seasons, setSeasons] = useState('')
-    const [duration, setDuration] = useState('')
+    // const [duration, setDuration] = useState('')
 
-    // Movies have titles, Series have names
-    const [isMovie, setIsMovie] = useState(movie.title ? true : false)
+    // FUNCTIONALITY USESTATES
+    const [isMovie] = useState(movie.title ? true : false)   // Movies have titles, Series have names
+    const [isHovered, setIsHovered] = useState(false)
 
     useEffect(() => {
 
@@ -28,10 +29,7 @@ const RowItem = ({ movie, isLargeRow }) => {
                     return obj.iso_3166_1 === 'US'
                 })?.release_dates[0].certification || "Not Rated")
 
-            // return rating
-
         }
-        fetchRatings()
 
         const fetchData = async () => {
             let req
@@ -45,31 +43,35 @@ const RowItem = ({ movie, isLargeRow }) => {
 
             setGenres(genresArray || "")
             setSeasons(req.data.number_of_seasons)
-
         }
 
+        fetchRatings()
         fetchData()
     }, [movie.id, isMovie, movie.name])
 
     // The returned endpoint for images doesn't include this part which is necessary to grab the images.
     const base_image_url = "https://image.tmdb.org/t/p/original"
 
+
     return (
-        <div className="row-item">
+
+        <div className={`row-item`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{ left: isHovered && index * 296 - 20 }} // Put it in correct positioning when hovered.
+        >
 
             <div className="image-container">
+
                 <img
                     className={`row-item-poster`}
                     src={base_image_url + `${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
                     alt={movie.name}
                 />
+
                 <h3 className="image-title">{movie.title || movie.name}</h3>
 
             </div>
-
-
-
-
 
             <div className="item-info">
                 <div className="icons-container">
