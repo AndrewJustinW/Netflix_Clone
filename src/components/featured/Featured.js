@@ -7,7 +7,6 @@ import { InfoOutlined, PlayArrow } from '@mui/icons-material'
 const Featured = () => {
 
     const [movie, setMovie] = useState([])
-
     useEffect(() => {
 
         const fetchData = async () => {
@@ -22,7 +21,7 @@ const Featured = () => {
         fetchData()
     }, [])
 
-    const shortOverview = movie.overview ? movie.overview.substring(0, 130) + "..." : '';
+    const shortOverview = movie?.overview ? movie.overview.substring(0, 150) + "..." : '';
 
     return (
 
@@ -40,12 +39,12 @@ const Featured = () => {
 
                 <h1 className="featured-title">
                     {/* Set Movie title but account for possible naming inconsistincies in API */}
-                    {movie?.title || movie?.name || movie?.original_name}
+                    {movie?.title || movie?.name || movie?.original_name || "......"}
                 </h1>
 
                 <h2 className="featured-desc">
 
-                    {shortOverview}
+                    {shortOverview || "..."}
 
                 </h2>
 

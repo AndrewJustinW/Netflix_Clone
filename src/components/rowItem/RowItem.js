@@ -5,10 +5,10 @@ import { Add, KeyboardArrowDown, PlayArrow, ThumbDownAltOutlined, ThumbUpAltOutl
 
 const RowItem = ({ movie, isLargeRow, index }) => {
     //API GATHERED INFO
-    const [rating, setRating] = useState('')
-    const [genres, setGenres] = useState([])
-    const [seasons, setSeasons] = useState('')
-    const [trailer, setTrailer] = useState('')
+    const [rating, setRating] = useState('loading...')
+    const [genres, setGenres] = useState(["loading..."])
+    const [seasons, setSeasons] = useState('loading..')
+    const [trailer, setTrailer] = useState('loading..')
     // const [duration, setDuration] = useState('')
 
     // FUNCTIONALITY USESTATES
