@@ -47,7 +47,7 @@ const RowItem = ({ movie, isLargeRow, index }) => {
 
             setGenres(genresArray || "")
             setSeasons(req.data.number_of_seasons)
-            setTrailer(`https://www.youtube-nocookie.com/embed/${videoKey}?controls=0`)
+            setTrailer(`https://www.youtube-nocookie.com/embed/${videoKey}?controls=0&autoplay=1&modestbranding=1&loop=1`)
         }
         fetchRatings()
         fetchData()
@@ -64,18 +64,21 @@ const RowItem = ({ movie, isLargeRow, index }) => {
             onMouseLeave={() => setIsHovered(false)}
             style={{ left: isHovered && index * 296 - 20 }} // Put it in correct positioning when hovered.
         >
+
+
+
             {isHovered
-                ? <iframe src={trailer} title="YouTube video player" frameborder="0" allow="autoplay;"></iframe>
+                ? <iframe src={trailer} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
                 : <div className="image-container">
 
                     <img
                         className={`row-item-poster`}
-                        src={base_image_url + `${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+                        src={base_image_url + `${isLargeRow ? movie?.poster_path : movie?.backdrop_path}`}
                         alt={movie.name}
                     />
 
 
-                    <h3 className="image-title">{movie.title || movie.name}</h3>
+                    <h3 className="image-title">{movie?.title || movie?.name}</h3>
 
                 </div>
             }
@@ -107,7 +110,7 @@ const RowItem = ({ movie, isLargeRow, index }) => {
 
                 <div className="genres">
                     {genres.map(genre => (
-                        <span className="genre">{genre}</span>
+                        <span key={genres.indexOf(genre)} className="genre">{genre}</span>
                     ))}
                 </div>
             </div>

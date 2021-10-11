@@ -1,5 +1,4 @@
 .row-item {
-    position: relative;
     width: 18.5em;
     height: 11em;
     background-color: var(--main-color);
@@ -14,7 +13,7 @@
 
         img {
             width: 100%;
-            // height: 100%;
+            height: 100%;
             object-fit: cover;
         }
 

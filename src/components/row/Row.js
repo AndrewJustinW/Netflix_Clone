@@ -63,7 +63,7 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
 
                     {movies.map((movie) => (
 
-                        <RowItem movie={movie} isLargeRow={isLargeRow} key={movie.id} fetchURL={fetchURL} index={movies.indexOf(movie)} />
+                        <RowItem key={movie.id} movie={movie} isLargeRow={isLargeRow} fetchURL={fetchURL} index={movies.indexOf(movie)} />
 
                     ))}
 
