@@ -47,7 +47,7 @@ const RowItem = ({ movie, isLargeRow, index }) => {
 
             setGenres(genresArray || "")
             setSeasons(req.data.number_of_seasons)
-            setTrailer(`https://www.youtube-nocookie.com/embed/${videoKey}?controls=0&autoplay=1&modestbranding=1&loop=1`)
+            setTrailer(`https://www.youtube-nocookie.com/embed/${videoKey}?controls=0&autoplay=1&modestbranding=1&loop=1&playlist=${videoKey}&showinfo=0`)
         }
         fetchRatings()
         fetchData()
@@ -58,63 +58,68 @@ const RowItem = ({ movie, isLargeRow, index }) => {
 
 
     return (
+        <>
+            {isHovered && <div className="spacer-left"></div>}
 
-        <div className={`row-item`}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            style={{ left: isHovered && index * 296 - 20 }} // Put it in correct positioning when hovered.
-        >
-
-
-
-            {isHovered
-                ? <iframe src={trailer} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
-                : <div className="image-container">
-
-                    <img
-                        className={`row-item-poster`}
-                        src={base_image_url + `${isLargeRow ? movie?.poster_path : movie?.backdrop_path}`}
-                        alt={movie.name}
-                    />
-
-
-                    <h3 className="image-title">{movie?.title || movie?.name}</h3>
-
-                </div>
-            }
+            <div className={`row-item`}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                style={{ left: isHovered && index * 296 - 25 }} // Put it in correct positioning when hovered.
+            >
 
 
 
+                {isHovered
+                    ? <iframe src={trailer} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+                    : <div className="image-container">
 
-            <div className="item-info">
-                <div className="icons-container">
-                    <div className="icons-left">
-                        <PlayArrow className="item-icon" sx={{ fontSize: 40 }} />
-                        <Add className="item-icon" sx={{ fontSize: 40 }} />
-                        <ThumbUpAltOutlined className="item-icon" sx={{ fontSize: 40 }} />
-                        <ThumbDownAltOutlined className="item-icon" sx={{ fontSize: 40 }} />
+                        <img
+                            className={`row-item-poster`}
+                            src={base_image_url + `${isLargeRow ? movie?.poster_path : movie?.backdrop_path}`}
+                            alt={movie.name}
+                        />
+
+
+                        <h3 className="image-title">{movie?.title || movie?.name}</h3>
+
+                    </div>
+                }
+
+
+
+
+                <div className="item-info">
+                    <div className="icons-container">
+                        <div className="icons-left">
+                            <PlayArrow className="item-icon" sx={{ fontSize: 40 }} />
+                            <Add className="item-icon" sx={{ fontSize: 40 }} />
+                            <ThumbUpAltOutlined className="item-icon" sx={{ fontSize: 40 }} />
+                            <ThumbDownAltOutlined className="item-icon" sx={{ fontSize: 40 }} />
+                        </div>
+
+                        <div className="icons-right">
+                            <KeyboardArrowDown className="item-icon" sx={{ fontSize: 40 }} />
+                        </div>
+
                     </div>
 
-                    <div className="icons-right">
-                        <KeyboardArrowDown className="item-icon" sx={{ fontSize: 40 }} />
+                    <div className="item-info-details">
+                        <span className="item-average">Rating: {movie.vote_average} / 10</span>
+                        <span className="rating">{rating}</span>
+                        {!isMovie && <span className="seasons">{seasons === 1 ? "1 Season" : seasons + " Seasons" || ""} </span>}
+                        <span className="resolution">HD</span>
                     </div>
 
-                </div>
-
-                <div className="item-info-details">
-                    <span className="item-average">Rating: {movie.vote_average} / 10</span>
-                    <span className="rating">{rating}</span>
-                    {!isMovie && <span className="seasons">{seasons === 1 ? "1 Season" : seasons + " Seasons" || ""} </span>}
-                    <span className="resolution">HD</span>
-                </div>
-
-                <div className="genres">
-                    {genres.map(genre => (
-                        <span key={genres.indexOf(genre)} className="genre">{genre}</span>
-                    ))}
+                    <div className="genres">
+                        {genres.map(genre => (
+                            <span key={genres.indexOf(genre)} className="genre">{genre}</span>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
+
+            {isHovered && <div className="spacer-right"></div>}
+        </>
     )
 }
 
