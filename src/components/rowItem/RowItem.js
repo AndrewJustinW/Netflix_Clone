@@ -8,6 +8,7 @@ const RowItem = ({ movie, isLargeRow, index }) => {
     const [rating, setRating] = useState('')
     const [genres, setGenres] = useState([])
     const [seasons, setSeasons] = useState('')
+    const [trailer, setTrailer] = useState('')
     // const [duration, setDuration] = useState('')
 
     // FUNCTIONALITY USESTATES
@@ -36,13 +37,17 @@ const RowItem = ({ movie, isLargeRow, index }) => {
             let genresArray = []
 
             !isMovie
-                ? req = await axios.get(`/tv/${movie.id}?api_key=33df560deb68ba199cabea7a3b00b7a5&language=en-US`)
-                : req = await axios.get(`/movie/${movie.id}?api_key=33df560deb68ba199cabea7a3b00b7a5&language=en-US`)
+                ? req = await axios.get(`/tv/${movie.id}?api_key=33df560deb68ba199cabea7a3b00b7a5&language=en-US&append_to_response=videos`)
+                : req = await axios.get(`/movie/${movie.id}?api_key=33df560deb68ba199cabea7a3b00b7a5&language=en-US&append_to_response=videos`)
 
             req.data?.genres.forEach(reqGenre => { genresArray.push(reqGenre.name) })
 
+            // grab videos from response
+            let videoKey = req.data.videos.results[0]?.key
+
             setGenres(genresArray || "")
             setSeasons(req.data.number_of_seasons)
+            setTrailer(`https://youtube.com/embed/${videoKey}`)
         }
 
         fetchRatings()
