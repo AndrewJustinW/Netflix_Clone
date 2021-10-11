@@ -24,9 +24,6 @@ const Featured = () => {
 
     const shortOverview = movie.overview ? movie.overview.substring(0, 130) + "..." : '';
 
-
-    // console.log(movie?.overview.length)
-
     return (
 
         <header className="featured">
