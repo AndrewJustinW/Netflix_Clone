@@ -118,7 +118,7 @@ const RowItem = ({ movie, isLargeRow, index }) => {
                 </div>
             </div>
 
-            {isHovered && <div className="spacer-right"></div>}
+            {isHovered && <div className="spacer-right" style={{ width: `${index * 0.1 + 16}rem` }}></div>}
         </>
     )
 }
