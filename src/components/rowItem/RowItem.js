@@ -14,6 +14,7 @@ const RowItem = ({ movie, isLargeRow, index }) => {
     // FUNCTIONALITY USESTATES
     const [isMovie] = useState(movie.title ? true : false)   // Movies have titles, Series have names
     const [isHovered, setIsHovered] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
 
@@ -51,6 +52,7 @@ const RowItem = ({ movie, isLargeRow, index }) => {
         }
         fetchRatings()
         fetchData()
+        setIsLoading(false)
     }, [movie.id, isMovie, movie.name])
 
     // The returned endpoint for images doesn't include this part which is necessary to grab the images.
@@ -61,62 +63,69 @@ const RowItem = ({ movie, isLargeRow, index }) => {
         <>
             {isHovered && <div className="spacer-left"></div>}
 
-            <div className={`row-item`}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                style={{ left: isHovered && index * 296 - 25 }} // Put it in correct positioning when hovered.
-            >
+            {isLoading
+                ? <div className="item-loading"></div>
+
+                : <div className={`row-item`}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    style={{ left: isHovered && index * 296 - 25 }} // Put it in correct positioning when hovered.
+                >
 
 
 
-                {isHovered
-                    ? <iframe src={trailer} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
-                    : <div className="image-container">
+                    {isHovered
+                        ? <iframe src={trailer} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+                        : <div className="image-container">
 
-                        <img
-                            className={`row-item-poster`}
-                            src={base_image_url + `${isLargeRow ? movie?.poster_path : movie?.backdrop_path}`}
-                            alt={movie.name}
-                        />
-
-
-                        <h3 className="image-title">{movie?.title || movie?.name}</h3>
-
-                    </div>
-                }
+                            <img
+                                className={`row-item-poster`}
+                                src={base_image_url + `${isLargeRow ? movie?.poster_path : movie?.backdrop_path}`}
+                                alt={movie.name}
+                            />
 
 
+                            <h3 className="image-title">{movie?.title || movie?.name}</h3>
+
+                        </div>
+                    }
 
 
-                <div className="item-info">
-                    <div className="icons-container">
-                        <div className="icons-left">
-                            <PlayArrow className="item-icon" sx={{ fontSize: 40 }} />
-                            <Add className="item-icon" sx={{ fontSize: 40 }} />
-                            <ThumbUpAltOutlined className="item-icon" sx={{ fontSize: 40 }} />
-                            <ThumbDownAltOutlined className="item-icon" sx={{ fontSize: 40 }} />
+
+
+                    <div className="item-info"
+
+                        style={{ display: !isHovered && "none" }}>
+                        <div className="icons-container">
+                            <div className="icons-left">
+                                <PlayArrow className="item-icon" sx={{ fontSize: 40 }} />
+                                <Add className="item-icon" sx={{ fontSize: 40 }} />
+                                <ThumbUpAltOutlined className="item-icon" sx={{ fontSize: 40 }} />
+                                <ThumbDownAltOutlined className="item-icon" sx={{ fontSize: 40 }} />
+                            </div>
+
+                            <div className="icons-right">
+                                <KeyboardArrowDown className="item-icon" sx={{ fontSize: 40 }} />
+                            </div>
+
                         </div>
 
-                        <div className="icons-right">
-                            <KeyboardArrowDown className="item-icon" sx={{ fontSize: 40 }} />
+                        <div className="item-info-details">
+                            <span className="item-average">Rating: {movie.vote_average} / 10</span>
+                            <span className="rating">{rating}</span>
+                            {!isMovie && <span className="seasons">{seasons === 1 ? "1 Season" : seasons + " Seasons" || ""} </span>}
+                            <span className="resolution">HD</span>
                         </div>
 
-                    </div>
-
-                    <div className="item-info-details">
-                        <span className="item-average">Rating: {movie.vote_average} / 10</span>
-                        <span className="rating">{rating}</span>
-                        {!isMovie && <span className="seasons">{seasons === 1 ? "1 Season" : seasons + " Seasons" || ""} </span>}
-                        <span className="resolution">HD</span>
-                    </div>
-
-                    <div className="genres">
-                        {genres.map(genre => (
-                            <span key={genres.indexOf(genre)} className="genre">{genre}</span>
-                        ))}
+                        <div className="genres">
+                            {genres.map(genre => (
+                                <span key={genres.indexOf(genre)} className="genre">{genre}</span>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            }
 
             {isHovered && <div className="spacer-right" style={{ width: `${index * 0.1 + 16}rem` }}></div>}
         </>

@@ -7,6 +7,7 @@ import { InfoOutlined, PlayArrow } from '@mui/icons-material'
 const Featured = () => {
 
     const [movie, setMovie] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
 
         const fetchData = async () => {
@@ -19,58 +20,76 @@ const Featured = () => {
         }
 
         fetchData()
+
+        setTimeout(() => {
+            setIsLoading(false)
+
+        }, 1000);
     }, [])
 
     const shortOverview = movie?.overview ? movie.overview.substring(0, 150) + "..." : '';
 
     return (
+        <>
 
-        <header className="featured">
+            <header className="featured-loading"></header>
 
-            <div className="featured-fade-bottom"></div>
+            <header className="featured">
 
-            <img
-                className="featured-img"
-                src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-                alt=""
-            />
+                <div className="featured-fade-bottom"></div>
 
-            <div className="featured-info">
+                {isLoading
 
-                <h1 className="featured-title">
-                    {/* Set Movie title but account for possible naming inconsistincies in API */}
-                    {movie?.title || movie?.name || movie?.original_name || "......"}
-                </h1>
+                    ? <div className="img-loading"></div>
 
-                <h2 className="featured-desc">
+                    : <img
+                        className="featured-img"
+                        src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+                        alt=""
+                    />
 
-                    {shortOverview || "..."}
+                }
 
-                </h2>
+                <div className="featured-info">
 
-                <div className="featured-buttons">
+                    <h1 className="featured-title">
+                        {/* Set Movie title but account for possible naming inconsistincies in API */}
+                        {movie?.title || movie?.name || movie?.original_name || "......"}
+                    </h1>
 
-                    <button className="play">
+                    <h2 className="featured-desc">
 
-                        <PlayArrow className="icons" sx={{ fontSize: 40 }} />
-                        <span>Play</span>
+                        {shortOverview || "..."}
 
-                    </button>
+                    </h2>
 
-                    <button className="more-info">
+                    <div className="featured-buttons">
 
-                        <InfoOutlined className="icons" sx={{ fontSize: 40 }} />
-                        <span>More Info</span>
+                        <button className="play">
 
-                    </button>
+                            <PlayArrow className="icons" sx={{ fontSize: 40 }} />
+                            <span>Play</span>
+
+                        </button>
+
+                        <button className="more-info">
+
+                            <InfoOutlined className="icons" sx={{ fontSize: 40 }} />
+                            <span>More Info</span>
+
+                        </button>
+
+                    </div>
+
 
                 </div>
 
 
-            </div>
+            </header>
 
 
-        </header>
+
+        </>
     )
 
 }

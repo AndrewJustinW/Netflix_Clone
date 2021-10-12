@@ -1,12 +1,27 @@
-// .spacer-right {
-//     margin-left: 22rem;
-// }
+.item-loading {
+    width: 18.5em;
+    height: 11em;
+    margin-right: 0.3125em;
+    overflow: hidden;
+    z-index: 3;
+    background-color: rgba(117, 117, 117, 0.877);
+    animation: blink-animation .5s steps(1, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+
+}
+
+@keyframes blink-animation {
+    to {
+        background-color: rgba(117, 117, 117, 0.582);
+    }
+
+}
 
 .row-item {
     width: 18.5em;
     height: 11em;
-    background-color: var(--main-color);
     color: black;
+    background-color: var(--main-color);
     margin-right: 0.3125em;
     overflow: hidden;
     color: white;
