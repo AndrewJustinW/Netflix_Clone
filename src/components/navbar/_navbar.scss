@@ -35,6 +35,11 @@
             span {
                 margin-right: 1.25em;
                 cursor: pointer;
+
+                &:hover {
+                    font-weight: 600;
+                    color: rgb(187, 187, 187);
+                }
             }
 
         }
