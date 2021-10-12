@@ -4,15 +4,15 @@
     margin-right: 0.3125em;
     overflow: hidden;
     z-index: 3;
-    background-color: rgba(117, 117, 117, 0.877);
-    animation: blink-animation .5s steps(1, start) infinite;
-    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+    background-color: rgba(117, 117, 117, 0.800);
+    animation: blink-animation 0.75s steps(1, start) infinite;
+    -webkit-animation: blink-animation 0.75s steps(1, start) infinite;
 
 }
 
 @keyframes blink-animation {
     to {
-        background-color: rgba(117, 117, 117, 0.582);
+        background-color: rgba(117, 117, 117, 0.500);
     }
 
 }

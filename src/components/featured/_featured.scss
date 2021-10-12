@@ -11,14 +11,14 @@
         position: absolute;
         z-index: 1;
         top: 0;
-        background-color: rgba(117, 117, 117, 0.877);
-        animation: blink-animation .5s steps(3, start) infinite;
-        -webkit-animation: blink-animation 1s steps(3, start) infinite;
+        background-color: rgba(117, 117, 117, 0.800);
+        animation: blink-animation 0.75s steps(10, start) infinite;
+        -webkit-animation: blink-animation 0.75s steps(10, start) infinite;
     }
 
     @keyframes blink-animation {
         to {
-            background-color: rgba(117, 117, 117, 0.582);
+            background-color: rgba(117, 117, 117, 0.5);
         }
 
     }

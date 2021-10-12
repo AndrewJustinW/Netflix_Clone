@@ -52,7 +52,12 @@ const RowItem = ({ movie, isLargeRow, index }) => {
         }
         fetchRatings()
         fetchData()
-        setIsLoading(false)
+
+        setTimeout(() => {
+            setIsLoading(false)
+
+        }, 1750);
+
     }, [movie.id, isMovie, movie.name])
 
     // The returned endpoint for images doesn't include this part which is necessary to grab the images.

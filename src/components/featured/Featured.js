@@ -24,7 +24,7 @@ const Featured = () => {
         setTimeout(() => {
             setIsLoading(false)
 
-        }, 1000);
+        }, 1750);
     }, [])
 
     const shortOverview = movie?.overview ? movie.overview.substring(0, 150) + "..." : '';
