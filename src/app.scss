@@ -9,10 +9,11 @@
     --main-color: #141414;
 }
 
-
+// Pages
 @import "./pages/home/home.scss";
 @import "./pages/player/player.scss";
 
+// Components
 @import "./components/navbar/_navbar.scss";
 @import "./components/featured/featured";
 @import "./components/row/row";

@@ -107,7 +107,9 @@
 
         .genres {
             display: flex;
+            width: 100%;
             align-items: center;
+            justify-content: center;
 
             span {
                 margin-right: 1em;

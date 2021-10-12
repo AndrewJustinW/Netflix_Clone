@@ -16,6 +16,7 @@ const RowItem = ({ movie, isLargeRow, index }) => {
     const [isHovered, setIsHovered] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
+
     useEffect(() => {
 
         const fetchRatings = async () => {
@@ -56,12 +57,13 @@ const RowItem = ({ movie, isLargeRow, index }) => {
         setTimeout(() => {
             setIsLoading(false)
 
-        }, 1750);
+        }, 2000);
 
     }, [movie.id, isMovie, movie.name])
 
     // The returned endpoint for images doesn't include this part which is necessary to grab the images.
     const base_image_url = "https://image.tmdb.org/t/p/original"
+
 
 
     return (
