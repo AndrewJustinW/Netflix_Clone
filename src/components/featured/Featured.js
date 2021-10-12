@@ -45,7 +45,7 @@ const Featured = () => {
                     : <img
                         className="featured-img"
                         src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-                        alt=""
+                        alt={movie?.name || movie?.title || movie?.original_name}
                     />
 
                 }

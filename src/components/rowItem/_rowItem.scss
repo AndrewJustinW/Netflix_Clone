@@ -5,8 +5,8 @@
     overflow: hidden;
     z-index: 3;
     background-color: rgba(117, 117, 117, 0.800);
-    animation: blink-animation 0.75s steps(1, start) infinite;
-    -webkit-animation: blink-animation 0.75s steps(1, start) infinite;
+    animation: blink-animation 0.75s steps(5, start) infinite;
+    -webkit-animation: blink-animation 0.75s steps(5, start) infinite;
 
 }
 
