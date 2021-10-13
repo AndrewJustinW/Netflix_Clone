@@ -1,9 +1,22 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const Register = () => {
 
     const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const emailRef = useRef()
+    const passRef = useRef()
+
+    const handleStart = () => {
+
+        setEmail(emailRef.current.value)
+    }
+
+    const handleFinish = () => {
+        setPassword(passRef.current.value)
+    }
 
     return (
 
@@ -27,11 +40,26 @@ const Register = () => {
 
                 <p> Ready to watch? Enter your email to create or restart your membership.</p>
 
-                <div className="input">
-                    <input type="email" placeholder="Email address" />
-                    <button className="register-button">Get Started <ChevronRightIcon fontSize="large" /></button>
 
-                </div>
+                {!email
+                    ?
+                    <div className="input">
+                        <input type="email" placeholder="Email address" ref={emailRef} />
+                        <button className="register-button" fontSize="large" onClick={handleStart} >Get Started <ChevronRightIcon /></button>
+
+                    </div>
+
+
+                    :
+                    <form className="input">
+                        <input type="password" placeholder="Set Password" ref={passRef} />
+                        <button className="register-button" fontSize="large" onClick={handleFinish} > Submit <ChevronRightIcon /></button>
+
+                    </form>
+
+
+                }
+
 
             </div>
 
