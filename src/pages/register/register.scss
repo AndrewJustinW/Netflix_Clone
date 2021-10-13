@@ -1,8 +1,6 @@
 .register {
     width: 100vw;
     height: 100vh;
-    width: 100vw;
-    height: 100vh;
     background: linear-gradient(to bottom,
             rgba(0, 0, 0, 0.7) 0%,
             rgba(0, 0, 0, 0.3) 50%,
@@ -97,6 +95,7 @@
                 border: none;
                 font-size: 1.7rem;
                 border-radius: 2%;
+
                 display: flex;
                 justify-content: center;
                 align-items: center;
