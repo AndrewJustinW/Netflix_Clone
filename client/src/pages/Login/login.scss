@@ -2,10 +2,9 @@
     width: 100vw;
     height: 100vh;
     background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.7) 0%,
-            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.089) 0%,
             rgba(0, 0, 0, 1) 100%),
-        url("https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg");
+        url("http://mppmduse2pmpovwapp.azurewebsites.net/wp-content/uploads/2019/09/netflix-background-9.jpg");
     background-size: cover;
 
     .top {
@@ -27,13 +26,15 @@
         display: flex;
         flex-direction: column;
         margin: 0 auto;
-        background-color: rgba(0, 0, 0, 0.753);
-        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.75);
+        border-radius: 5px;
+        border: solid 2px black;
 
 
         h1 {
             margin-bottom: 1.5rem;
             color: white;
+            font-weight: 500;
 
         }
 
@@ -115,12 +116,20 @@
             .white-text {
                 color: white;
                 cursor: pointer;
-                font-weight: 500;
 
                 &:hover {
                     text-decoration: underline;
                 }
             }
+        }
+
+        small {
+            color: rgb(100, 99, 99);
+            margin-top: 2rem;
+        }
+
+        b {
+            color: rgb(0, 47, 255);
         }
     }
 

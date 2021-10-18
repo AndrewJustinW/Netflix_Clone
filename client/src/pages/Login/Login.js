@@ -26,9 +26,9 @@ const Login = () => {
 
             <div className="container">
 
-                <h1>Sign In</h1>
 
                 <form className="inputs">
+                    <h1>Sign In</h1>
 
                     <div className="input">
 
@@ -62,6 +62,10 @@ const Login = () => {
                     <span className="white-text">Sign up now.</span>
                 </div>
 
+                <small>
+                    This page is protected by Google reCAPTCHA to ensure you're not a
+                    bot. <b>Learn more</b>.
+                </small>
 
             </div>
 
